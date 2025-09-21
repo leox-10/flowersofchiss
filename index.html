@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Only Chiss</title>
+  <link rel="icon" type="image/x-icon" href="flor.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #87ceeb url('fondogod.jpg') no-repeat center center/100% 100%;
+      overflow: hidden;
+      font-family: 'Dancing Script', cursive;
+    }
+
+    h1 {
+      position: relative;
+      z-index: 10;
+      color: #444;
+      font-size: 3.2rem;
+      font-weight: 800;
+      text-align: center;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
+
+    .flower {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      animation: float linear infinite;
+      opacity: 0;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) rotate(0deg); /* 👈 Siempre empieza abajo */
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-120vh) rotate(360deg); /* 👈 Sube y desaparece arriba */
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Para ti Chiss 🌼<br> Tú puedes con todo y sigue para adelante siempre ✨</h1>
+
+  <script>
+    const numFlores = 20;
+
+    const ImagenesFlores = [
+        "flor.png",
+        "snoopy.png"
+    ];
+
+    for (let i = 0; i < numFlores; i++) {
+      const flower = document.createElement("div");
+      flower.classList.add("flower");
+
+      const randomImg = ImagenesFlores[Math.floor(Math.random() * ImagenesFlores.length)];
+      flower.style.background = `url('${randomImg}') no-repeat center/contain`;
+
+      // Posición horizontal aleatoria
+      flower.style.left = Math.random() * 100 + "vw";
+
+      // Animación con distinta velocidad
+      const duration = 8 + Math.random() * 6;
+      flower.style.animationDuration = duration + "s";
+
+      // Retraso aleatorio para que no salgan todas en fila
+      flower.style.animationDelay = Math.random() * duration + "s";
+
+      document.body.appendChild(flower);
+    }
+  </script>
+</body>
+</html>
